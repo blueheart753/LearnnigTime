@@ -53,6 +53,10 @@ aside {
     height: 100vh;
     background: #5a5a5a;
     border-right: 1px solid #acacac;
+    padding: 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .dash-board-box {
@@ -61,8 +65,7 @@ aside {
 
 .side-contents {
     padding: 9px;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
 }
 
 .prev-next-box {
@@ -71,7 +74,7 @@ aside {
 }
 
 .move-btn {
-    margin: 10px 0;
+    width: 100%;
     padding: 10px 0;
     background-color: #7c7c7c57;
 }
