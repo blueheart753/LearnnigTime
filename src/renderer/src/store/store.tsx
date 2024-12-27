@@ -1,22 +1,22 @@
 import { create } from 'zustand';
 
 type State = {
-  moveNavigateNumber: number;
-  updateMoveNavigateNumber: (number: number) => void;
   moveNavigateName: string;
-  updateMoveNavigateName: (name: string) => void;
+  setMoveNavigateName: (name: string) => void;
+  navigateTargetUrl: string;
+  setNavigateTargetUrl: (url: string) => void;
 };
 
 const useStateStore = create<State>((set) => ({
-  moveNavigateNumber: 0,
   moveNavigateName: '',
-  updateMoveNavigateNumber: (number) =>
-    set(() => ({
-      moveNavigateNumber: number
-    })),
-  updateMoveNavigateName: (name) =>
+  setMoveNavigateName: (name: string) =>
     set(() => ({
       moveNavigateName: name
+    })),
+  navigateTargetUrl: '',
+  setNavigateTargetUrl: (url: string) =>
+    set(() => ({
+      navigateTargetUrl: url
     }))
 }));
 

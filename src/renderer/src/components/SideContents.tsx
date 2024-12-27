@@ -1,30 +1,24 @@
 import { useNavigate } from 'react-router-dom';
+import useStateStore from '@renderer/store/store';
+import { memo } from 'react';
 
 interface TextType {
-  current_title: string;
   title: string;
   target_url: string;
 }
 
 const SideContents = (props: TextType) => {
+  let { setMoveNavigateName, setNavigateTargetUrl } = useStateStore();
   const navigate = useNavigate();
+
   const moveFunc = (Link: string) => {
+    setMoveNavigateName(props.title);
+    setNavigateTargetUrl(Link);
     navigate(`/${Link}`);
   };
 
-  const movePrev = () => {
-    navigate(-3);
-  };
-  const moveNext = () => {
-    navigate(+1);
-  };
   return (
     <div className="side-contents">
-      <div className="prev-next-box">
-        <button onClick={movePrev}>◀</button>
-        <span>{props.current_title}</span>
-        <button onClick={moveNext}>▶</button>
-      </div>
       <button
         onClick={() => {
           moveFunc(props.target_url);
@@ -37,4 +31,4 @@ const SideContents = (props: TextType) => {
   );
 };
 
-export default SideContents;
+export default memo(SideContents);
