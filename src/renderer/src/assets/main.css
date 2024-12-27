@@ -53,10 +53,7 @@ aside {
     height: 100vh;
     background: #5a5a5a;
     border-right: 1px solid #acacac;
-    padding: 9px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    padding: 9px 2px;
 }
 
 .dash-board-box {
