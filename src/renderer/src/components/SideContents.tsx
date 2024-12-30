@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import useStateStore from '@renderer/store/store';
-import { memo } from 'react';
+import { useNavigateStateStore } from '@renderer/store/store';
 
 interface TextType {
   title: string;
@@ -8,7 +7,7 @@ interface TextType {
 }
 
 const SideContents = (props: TextType) => {
-  let { setMoveNavigateName, setNavigateTargetUrl } = useStateStore();
+  let { setMoveNavigateName, setNavigateTargetUrl } = useNavigateStateStore();
   const navigate = useNavigate();
 
   const moveFunc = (Link: string) => {
@@ -31,4 +30,4 @@ const SideContents = (props: TextType) => {
   );
 };
 
-export default memo(SideContents);
+export default SideContents;

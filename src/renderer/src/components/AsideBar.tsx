@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import SideContents from './SideContents';
-import useStateStore from '@renderer/store/store';
 import { useEffect } from 'react';
-import { memo } from 'react';
+import { useNavigateStateStore } from '@renderer/store/store';
 
 const AsideBar = () => {
   const SideContent = [
@@ -10,7 +9,7 @@ const AsideBar = () => {
     { title: '대시보드', target_url: 'DashBoard' }
   ];
 
-  let { moveNavigateName, navigateTargetUrl, setMoveNavigateName } = useStateStore();
+  let { moveNavigateName, navigateTargetUrl, setMoveNavigateName } = useNavigateStateStore();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,4 +41,4 @@ const AsideBar = () => {
   );
 };
 
-export default memo(AsideBar);
+export default AsideBar;
