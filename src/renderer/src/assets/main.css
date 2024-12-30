@@ -68,6 +68,7 @@ aside {
 .prev-next-box {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .move-btn {
@@ -79,4 +80,42 @@ aside {
 .prev-next-box>span {
     color: #fff;
     font-weight: bold;
+}
+
+.Home {
+    display: flex;
+}
+
+.watch-button {
+    width: 25em;
+    height: 25em;
+    background-color: #fff;
+    margin: auto auto;
+    border-radius: 50%;
+    box-shadow: 1px 1px 12px 5px #1b156b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    transition: all 0.3s;
+}
+
+.watch-button:active {
+    transform: scale(0.97);
+}
+
+.watch-button>p {
+    font-weight: bold;
+}
+
+.study-full-time-title {
+    font-size: 1.4em;
+    color: #232323;
+}
+
+.study-full-time {
+    font-weight: bolder;
+    font-size: 2em;
+    color: #1b156b;
 }
