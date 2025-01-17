@@ -1,19 +1,24 @@
 import { create } from 'zustand';
 
-type NavigateState = {
+export type NavigateState = {
   moveNavigateName: string;
   setMoveNavigateName: (name: string) => void;
   navigateTargetUrl: string;
   setNavigateTargetUrl: (url: string) => void;
 };
 
-type TimerState = {
+export type TimerState = {
   Hour: number;
   setHour: (hour: number) => void;
   Minute: number;
   setMinute: (minute: number) => void;
   Second: number;
   setSecond: (second: number) => void;
+};
+
+export type StudyData = {
+  StudyName: string;
+  setStudyName: (name: string) => void;
 };
 
 const useNavigateStateStore = create<NavigateState>((set) => ({
@@ -32,4 +37,9 @@ const useTimerStateStore = create<TimerState>((set) => ({
   setSecond: (second) => set({ Second: second })
 }));
 
-export { useNavigateStateStore, useTimerStateStore };
+const useStudyDataStateStore = create<StudyData>((set) => ({
+  StudyName: '',
+  setStudyName: (name) => set({ StudyName: name })
+}));
+
+export { useNavigateStateStore, useTimerStateStore, useStudyDataStateStore };
