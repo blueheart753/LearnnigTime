@@ -3,7 +3,7 @@ import Watch from '@renderer/components/Watch';
 
 const Home = () => {
   return (
-    <div className="Home">
+    <div className="main-box">
       <AsideBar />
       <Watch />
     </div>

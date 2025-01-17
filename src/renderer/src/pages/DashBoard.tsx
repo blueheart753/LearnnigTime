@@ -4,7 +4,7 @@ import Header from '@renderer/components/Header';
 const DashBoard = () => {
   return (
     <section>
-      <div className="dash-board-box">
+      <div className="main-box">
         <AsideBar />
         <Header />
       </div>
