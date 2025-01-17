@@ -1,27 +1,25 @@
 import AsideBar from '@renderer/components/AsideBar';
-import { useTimerStateStore } from '@renderer/store/store';
-import { useEffect, useState } from 'react';
+import InputData from '@renderer/components/InputData';
+import StopWatch from '@renderer/components/StopWatch';
+import { useNavigateStateStore } from '@renderer/store/store';
+import { useEffect } from 'react';
 
 const StudyRoom = () => {
-  let { Second, setSecond } = useTimerStateStore();
-  const [isRunning, setIsRunning] = useState<boolean>();
+  const { setMoveNavigateName } = useNavigateStateStore();
 
   useEffect(() => {
-    let timer;
+    setMoveNavigateName('공부하기');
+  }, []);
 
-    if (isRunning) {
-      timer = setInterval(() => {
-        setSecond(Second++);
-      }, 1000);
-    }
-
-    return () => clearInterval(timer);
-  }, [isRunning]);
-
-  // const toggleTimer = () => {
-  //   setIsRunning(!isRunning);
-  // };
-  return <AsideBar />;
+  return (
+    <div className="main-box">
+      <AsideBar />
+      <div className="study-box">
+        <InputData />
+        <StopWatch />
+      </div>
+    </div>
+  );
 };
 
 export default StudyRoom;
