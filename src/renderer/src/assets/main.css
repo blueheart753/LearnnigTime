@@ -56,7 +56,7 @@ aside {
     padding: 9px 2px;
 }
 
-.dash-board-box {
+.main-box {
     display: flex;
 }
 
@@ -80,10 +80,6 @@ aside {
 .prev-next-box>span {
     color: #fff;
     font-weight: bold;
-}
-
-.Home {
-    display: flex;
 }
 
 .watch-button {
@@ -118,4 +114,80 @@ aside {
     font-weight: bolder;
     font-size: 2em;
     color: #1b156b;
+}
+
+.study-box {
+    width: 100%;
+}
+
+.input-container {
+    width: 100%;
+}
+
+.input-box {
+    width: 60%;
+    margin: 1% auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.input-box>input {
+    width: 40%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 0;
+    outline: none;
+    text-align: center;
+}
+
+.input-box>button {
+    width: 40%;
+    padding: 9px;
+    background-color: #1b156b;
+}
+
+.study-box {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.study-title {
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.stopwatch-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-content: space-around;
+}
+
+.stopwatch {
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 3em;
+}
+
+.stopwatch-controller {
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.stopwatch-controller>button {
+    border: 2px solid #fff;
+    padding: 9px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    font-weight: 600;
 }
