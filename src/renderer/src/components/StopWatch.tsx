@@ -1,29 +1,39 @@
-import { useStudyDataStateStore, useTimerStateStore } from '@renderer/store/store';
+import { useStudyDataStateStore } from '@renderer/store/store';
+import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const StopWatch = () => {
-  let { Hour, Minute, Second, setSecond } = useTimerStateStore();
   const { StudyName } = useStudyDataStateStore();
-  const [hour, setHours] = useState<string>();
-  const [minute, setMinutes] = useState<string>();
-  const [second, setSeconds] = useState<string>();
-  const navigate = useNavigate();
+  let [Hour, setHour] = useState<number>(0);
+  let [Minute, setMinute] = useState<number>(0);
+  let [Second, setSecond] = useState<number>(0);
+  const today = dayjs();
 
-  useEffect(() => {
-    setHours(String(Hour).padStart(2, '0'));
-    setMinutes(String(Minute).padStart(2, '0'));
-    setSeconds(String(Second).padStart(2, '0'));
-  }, [Hour, Minute, Second]);
+  const navigate = useNavigate();
 
   const [isRunning, setIsRunning] = useState<boolean>();
 
   useEffect(() => {
-    let timer;
+    let timer: NodeJS.Timeout | undefined;
 
     if (isRunning) {
       timer = setInterval(() => {
-        setSecond(Second++);
+        setSecond((prevSecond) => {
+          const newSecond = prevSecond + 1;
+          if (newSecond === 60) {
+            setMinute((prevMinute) => {
+              const newMinute = prevMinute + 1;
+              if (newMinute === 60) {
+                setHour((prevHour) => prevHour + 1);
+                return 0;
+              }
+              return newMinute;
+            });
+            return 0;
+          }
+          return newSecond;
+        });
       }, 1000);
     }
 
@@ -37,13 +47,24 @@ const StopWatch = () => {
       alert('어떤 걸 공부할지 적어주세요!');
     }
   };
+  const formatTime = (Time: number) => {
+    return String(Time).padStart(2, '0');
+  };
 
   const saveStudyDataHandler = () => {
+    const year = today.get('year');
+    const month = today.get('month') + 1;
+    const day = today.get('day');
+    console.log(`${today.get('year')} . ${today.get('month')} . ${today.get('day')}`);
+
     const studyData = {
       name: StudyName,
-      hour: hour,
-      minute: minute,
-      second: second
+      second: Second,
+      minute: Minute,
+      hour: Hour,
+      year: year,
+      month: month,
+      day: day
     };
 
     const existingDataStr = localStorage.getItem('studies');
@@ -56,25 +77,26 @@ const StopWatch = () => {
     } else {
       alert('데이터 저장에 실패했습니다.\n작성된 내용을 다시 확인해 주세요.');
     }
+    console.log(existingDataStr);
 
     console.log('저장된 학습 데이터:', studies);
   };
 
-  // const deleteLocalStorageHandler = () => {
-  //   localStorage.clear();
-  //   console.log('스토리지 삭제 완료!');
-  // };
+  const deleteLocalStorageHandler = () => {
+    localStorage.clear();
+    console.log('스토리지 삭제 완료!');
+  };
 
   return (
     <div className="stopwatch-container">
       <p className="study-title">{StudyName.length !== 0 ? StudyName : '공부할 것을 적어주세요'}</p>
       <p className="stopwatch">
-        {hour} : {minute} : {second}
+        {formatTime(Hour)} : {formatTime(Minute)} : {formatTime(Second)}
       </p>
       <div className="stopwatch-controller">
         <button onClick={saveStudyDataHandler}>종료</button>
         <button onClick={toggleTimer}>{isRunning ? '정지' : '시작'}</button>
-        {/* <button onClick={deleteLocalStorageHandler}>삭제</button> */}
+        <button onClick={deleteLocalStorageHandler}>삭제</button>
       </div>
     </div>
   );

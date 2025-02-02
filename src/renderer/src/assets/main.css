@@ -19,6 +19,11 @@ button {
     background-color: transparent;
 }
 
+ul,
+li {
+    list-style: none;
+}
+
 header {
     width: calc(100% - 200px);
     height: 100px;
@@ -58,6 +63,18 @@ aside {
 
 .main-box {
     display: flex;
+}
+
+.main-container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 42px;
+}
+
+.dashboard>div>div {
+    width: 100%;
 }
 
 .side-contents {
@@ -190,4 +207,47 @@ aside {
     border-radius: 50%;
     font-size: 1.2em;
     font-weight: 600;
+}
+
+.study-record-box {
+    overflow-y: scroll;
+    height: 80%;
+    margin: 20px auto;
+}
+
+[type="checkbox"] {
+    width: 50px;
+    height: 30px;
+}
+
+.study-record-box>ul {
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 24px;
+}
+
+.study-record-box>ul>li {
+    border-radius: 12px;
+    background-color: #efefef;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 1.12em;
+}
+
+.study-record-box>ul>p {
+    font-weight: 600;
+    font-size: 1.5em;
+    color: #fff;
+    text-align: center;
+}
+
+.study-data {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }

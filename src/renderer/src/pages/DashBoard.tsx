@@ -1,12 +1,12 @@
 import AsideBar from '@renderer/components/AsideBar';
-import Header from '@renderer/components/Header';
+import StudyRecord from '@renderer/components/StudyRecord';
 
 const DashBoard = () => {
   return (
-    <section>
+    <section className="dashboard">
       <div className="main-box">
         <AsideBar />
-        <Header />
+        <StudyRecord />
       </div>
     </section>
   );

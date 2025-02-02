@@ -1,5 +1,5 @@
 import { useStudyDataStateStore } from '@renderer/store/store';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const InputData = () => {
   const studyName = useRef<HTMLInputElement | null>(null);
@@ -11,6 +11,10 @@ const InputData = () => {
       console.log(studyName.current.value);
     }
   };
+
+  useEffect(() => {
+    setStudyName('');
+  }, []);
 
   return (
     <section className="input-container">
