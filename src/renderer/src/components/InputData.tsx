@@ -7,7 +7,7 @@ const InputData = () => {
 
   const submit = () => {
     if (studyName.current) {
-      setStudyName(studyName.current.value.replaceAll(' ', '').trim());
+      setStudyName(studyName.current.value.trim());
       console.log(studyName.current.value);
     }
   };
