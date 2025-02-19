@@ -23,9 +23,22 @@ const Watch = () => {
   }, []);
 
   useEffect(() => {
-    const totalSeconds = studyRecords.reduce((sum, record) => sum + record.second, 0);
-    const totalMinute = studyRecords.reduce((sum, record) => sum + record.minute, 0);
-    const totalHour = studyRecords.reduce((sum, record) => sum + record.hour, 0);
+    let totalSeconds = studyRecords.reduce((sum, record) => sum + record.second, 0);
+    let totalMinute = studyRecords.reduce((sum, record) => sum + record.minute, 0);
+    let totalHour = studyRecords.reduce((sum, record) => sum + record.hour, 0);
+
+    if(totalSeconds >= 60) {
+      while(totalSeconds >= 60) {
+        totalSeconds -= 60;
+        totalMinute += 1;
+      }
+    }else if(totalMinute >=60) {
+      while(totalMinute > 60) {
+        totalMinute -= 60;
+        totalHour += 1;
+      }
+    }
+    
     setSecond(totalSeconds);
     setMinute(totalMinute);
     setHour(totalHour);
