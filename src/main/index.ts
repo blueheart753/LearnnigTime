@@ -22,10 +22,10 @@ function createWindow(): void {
   autoUpdater.on('checking-for-update', () => {
     log.info('업데이트 확인 중...');
   });
-  autoUpdater.on('update-available', (info) => {
+  autoUpdater.on('update-available', () => {
     log.info('업데이트가 가능합니다.');
   });
-  autoUpdater.on('update-not-available', (info) => {
+  autoUpdater.on('update-not-available', () => {
     log.info('현재 최신버전입니다.');
   });
   autoUpdater.on('error', (err) => {
@@ -37,7 +37,7 @@ function createWindow(): void {
     log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
     log.info(log_message);
   })
-  autoUpdater.on('update-downloaded', (info) => {
+  autoUpdater.on('update-downloaded', () => {
     log.info('업데이트가 완료되었습니다.');
   });
 
