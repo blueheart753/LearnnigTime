@@ -17,6 +17,11 @@ export type StudyData = {
   setStudyName: (name: string) => void;
 };
 
+export type ModalState = {
+  OpenModalFlag: boolean;
+  setOpenModalFlag: (openModalFlag: boolean) => void;
+};
+
 const useNavigateStateStore = create<NavigateState>((set) => ({
   moveNavigateName: '',
   setMoveNavigateName: (name) => set({ moveNavigateName: name }),
@@ -34,4 +39,9 @@ const useStudyDataStateStore = create<StudyData>((set) => ({
   setStudyName: (name) => set({ StudyName: name })
 }));
 
-export { useNavigateStateStore, useTimerStateStore, useStudyDataStateStore };
+const useModalStateStore = create<ModalState>((set) => ({
+  OpenModalFlag: false,
+  setOpenModalFlag: (openModalFlag) => set({ OpenModalFlag: openModalFlag })
+}));
+
+export { useNavigateStateStore, useTimerStateStore, useStudyDataStateStore, useModalStateStore };
