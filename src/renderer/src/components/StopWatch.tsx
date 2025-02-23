@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const StopWatch = () => {
-  const { StudyName } = useStudyDataStateStore();
+  const { StudyName, setStudyName } = useStudyDataStateStore();
   let [Hour, setHour] = useState<number>(0);
   let [Minute, setMinute] = useState<number>(0);
   let [Second, setSecond] = useState<number>(0);
@@ -21,10 +21,10 @@ const StopWatch = () => {
       timer = setInterval(() => {
         setSecond((prevSecond) => {
           const newSecond = prevSecond + 1;
-          if (newSecond === 60) {
+          if (newSecond >= 60) {
             setMinute((prevMinute) => {
               const newMinute = prevMinute + 1;
-              if (newMinute === 60) {
+              if (newMinute >= 60) {
                 setHour((prevHour) => prevHour + 1);
                 return 0;
               }
@@ -83,8 +83,18 @@ const StopWatch = () => {
   };
 
   const deleteLocalStorageHandler = () => {
-    localStorage.clear();
+    StudyName.length !== 0
+      ? confirm(`${StudyName} 을/를 지우시겠습니까?`)
+        ? DeleteThisStudy()
+        : null
+      : null;
     console.log('스토리지 삭제 완료!');
+  };
+
+  const DeleteThisStudy = () => {
+    alert(`${StudyName} 을/를 삭제되었습니다.`);
+    setStudyName('');
+    navigate('/');
   };
 
   return (
